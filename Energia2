@@ -1,0 +1,38 @@
+#C == Consumo / B == bandeira / M == Mês
+#CTA == Consumo total anual / MCM == Média de Consumo Mensal
+#CT == Consumo total no Vetor / BT == Bandeiras no Vetor / ME == Meses
+#KWH == Taxas a cada 100kwh / B2 == Bandeira Amarela / B3 == Bandeira Vermelha1 / B4 == Bandeira Vermelha2
+
+u = 0
+i = 0
+cta = 0
+kwh = 0
+ct = []
+bt = []
+me = []
+
+while i < 12:
+  c = float(input('Digite o Consumo:\n'))
+  kwh += ((c//100)*6.24)
+  b = int(input('Digite qual a bandeira vigente: (1 para verde, 2 para Amarela, 3 para Vermelha1 e 4 para Vermelha2)\n'))
+  if b == 2:
+    kwh += ((c//100)*1.343)
+  elif b == 3:
+    kwh += ((c//100)*4.169)
+  elif b == 4:
+    kwh += ((c//100)*6.243)
+  m = int(input('Mês:\n'))
+  i += 1
+  cta += c
+  ct.append(c)
+  bt.append(b)
+  me.append(m)
+
+mcm = cta/12
+tudo = [me, ct, bt]
+
+print('\n  Mês        Consumo(Kwh)        Bandeira')
+while u < 12:
+  print('{0:>5} {1:>15.2f} {2:>15.0f}'.format(tudo[0][0+u],tudo[1][0+u],tudo[2][0+u]))
+  u += 1
+print('\nO Consumo total anual foi de: {0} Kwh\n\nMédia de Consumo Mensal foi de: {1:.2f} Kwh\n\nO valor total em taxas foi de R${2:.2f} Reais\n\nA média mensal de taxas de consumo foi de R${3:.2f} Reais'.format(cta,mcm,kwh,kwh/12))
