@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main(void) {
+  int i=0, lc=0, ln=0,x=0;
+  float cs=0, bd=0, mes=0;
+  float kwh=0, cta=0;
+  int vetor[12][3];
+  float mcm, mmt;
+ 
+while(i<12){
+  printf("digite o mes:\n");
+  scanf("%d", &vetor[0+ln][0]);
+  printf("digite o consumo:\n");
+  scanf("%d", &vetor[0+ln][1]);
+  cs = vetor[0+ln][1];
+  kwh+=((cs/100)*6.24);
+  printf("digite a bandeira:(1 para verde, 2 para amarelo, 3 para vermelho patamar 1 e 4 para vermelho patamar 2)\n");
+  scanf("%d", &vetor[0+ln][2]);
+  if (bd==2){
+  kwh+=((cs/100)*1.343);
+  } 
+  if (bd==3){
+  kwh+=((cs/100)*4.169);
+  }
+  if (bd==4){
+  kwh+=((cs/100)*6.243);
+ } cta+=cs;
+  i+=1;
+  ln+=1; 
+}
+  mcm=cta/12;
+  mmt=kwh/12;
+printf("\nmes  consumo(kwh)  bandeira\n");
+while (x<12){
+printf("%d        %d           %d\n", vetor[0+x][0], vetor[0+x][1], vetor[0+x][2]);
+x+=1;
+}
+printf("consumo total anual eh %.2f\n", cta);
+printf("o consumo medio mensal eh %.2f\n", mcm);
+printf("o valor total em taxas eh de R$%.2f\n", kwh);
+printf("a media mensal de taxas eh R$%.2f\n", mmt);
+  return 0;
+}
